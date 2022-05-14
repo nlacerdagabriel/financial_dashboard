@@ -21,23 +21,22 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
-
-  Route.group(() => {
-
-    Route.post('/register', 'UsersController.register')
-    
-  }).prefix('/user')
-
   Route.group(() => {
     Route.post('/login', 'AuthController.login')
     Route.post('/logout', 'AuthController.logout')
   })
 
+  Route.group(() => {
+    Route.post('/register', 'UsersController.register')
+  }).prefix('/user')
 
-  Route.get('/', async () => {
-    return { hello: 'world' }
-  }).middleware('auth')
-  
+  Route.group(() => {
+    Route.get('/', 'TransactionsController.index')
+    Route.post('/', 'TransactionsController.store')
+    Route.get('/:id', 'TransactionsController.show')
+    Route.post('/:id', 'TransactionsController.update')
+    Route.delete('/:id', 'TransactionsController.delete')
+  }).prefix('/transaction').middleware('auth')
 
 }).prefix('/api')
 

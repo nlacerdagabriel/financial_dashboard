@@ -12,14 +12,14 @@ export default class Transaction extends BaseModel {
   @column()
   public type: string
 
-  @column.date()
+  @column.dateTime()
   public date: DateTime
 
   @column()
   public value: number
 
   @column()
-  public user_id: string
+  public user_id: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

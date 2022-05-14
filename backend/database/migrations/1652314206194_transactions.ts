@@ -10,7 +10,7 @@ export default class Transactions extends BaseSchema {
       table.string('type').notNullable()
       table.datetime('date').notNullable()
       table.decimal('value').notNullable()
-      table.integer('user_id').unsigned().references('users.id').onDelete('CASCADE')
+      table.integer('user_id').unsigned().references('users.id').onDelete('CASCADE').notNullable()
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })
