@@ -38,5 +38,13 @@ Route.group(() => {
     Route.delete('/:id', 'TransactionsController.delete')
   }).prefix('/transaction').middleware('auth')
 
+  Route.group(() => {
+    Route.get('/', 'CategoriesController.index')
+    Route.get('/:id', 'CategoriesController.show')
+    Route.post('/', 'CategoriesController.store')
+    Route.post('/:id', 'CategoriesController.update')
+    Route.delete('/:id', 'CategoriesController.delete')
+  }).prefix('/category').middleware('auth')
+
 }).prefix('/api')
 

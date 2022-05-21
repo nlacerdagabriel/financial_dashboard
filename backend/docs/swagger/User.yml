@@ -1,0 +1,28 @@
+/api/user/register:
+  post:
+    tags:
+      - User
+    description: Register User
+    parameters:
+      - name: data
+        in:  body
+        required: true
+        schema:
+          properties:
+            email:
+              type: string
+              example: 'blabla@blabla.com'
+              required: true
+            name:
+              type: string
+              example: 'Teste'
+              required: true
+            password:
+              type: string
+              example: '123123'
+              required: true
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Success

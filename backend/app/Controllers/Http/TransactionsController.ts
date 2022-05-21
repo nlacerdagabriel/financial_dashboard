@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
+import Category from 'App/Models/Category'
 import Transaction from 'App/Models/Transaction'
 
 export default class TransactionsController {
@@ -19,11 +20,19 @@ export default class TransactionsController {
       type: schema.string(),
       date: schema.date(),
       value: schema.number(),
+      category: schema.string()
     })
 
+    const payload = await request.validate({ schema: TransactionSchema })
+
+    const categoryExists = await Category.findBy('name', payload.category)
+
+    if(!categoryExists){
+      return response.json({message: 'Category does not exists.'})
+    }
+    
     const userId = auth.use('api').user?.id
 
-    const payload = await request.validate({ schema: TransactionSchema })
     const transaction = await Transaction.create({ user_id: userId, ...payload })
 
     return response.json({ message: "Transaction created successfully!", transaction })
