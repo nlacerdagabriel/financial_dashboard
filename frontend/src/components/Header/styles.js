@@ -5,13 +5,14 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 3rem;
 
     & > div{
         display: flex;
 
-        & > div:first-child{
-            margin-right: 0.7rem;
-        }
+       .selectComponent{
+           color: white;
+       }
     }
 
 `

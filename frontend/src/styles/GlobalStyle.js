@@ -36,6 +36,7 @@ export const GlobalStyle = createGlobalStyle`
     body{
         background-color: var(--bg-dark);
         -webkit-font-smoothing: antialiased;
+        color: var(--white);
     }
 
     body, input, textarea, button{

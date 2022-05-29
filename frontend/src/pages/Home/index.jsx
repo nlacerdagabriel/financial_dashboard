@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Grid from "../../Layout/Grid";
 import Header from "../../components/Header";
+import InfoMoney from "../../components/InfoMoney";
 
 export default () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ export default () => {
   return (
       <Grid>
         <Header>Dashboard</Header>
+        <InfoMoney/>
       </Grid>
     )
 };
