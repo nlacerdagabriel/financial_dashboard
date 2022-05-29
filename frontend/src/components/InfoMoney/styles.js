@@ -2,12 +2,12 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
 display: flex;
+margin-bottom: 2rem;
 `
 
 export const ContainerInfo = styled.div`
   height: 160px;
   flex: 1;
-  border: 1px solid white;
   border-radius: 0.5rem;
   padding: 1rem;
   position: relative;
