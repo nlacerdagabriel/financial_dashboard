@@ -1,0 +1,3 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/nlacerdagabriel/frontend_web_financial_dashboard

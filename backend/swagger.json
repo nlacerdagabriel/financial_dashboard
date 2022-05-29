@@ -1,0 +1,22 @@
+{
+  "/user/register": {
+    "post": {
+      "description": "Create a user",
+      "responses": {
+        "200": {          
+          "description": "Create a user",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "items": {
+                  "$ref": "#/components/schemas/user"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
