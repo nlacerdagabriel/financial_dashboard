@@ -12,7 +12,8 @@ export const GlobalStyle = createGlobalStyle`
         --danger:#700001;
 
     }
-    
+
+
     *{
         margin: 0;
         padding: 0;

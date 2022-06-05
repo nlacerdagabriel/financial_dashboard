@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
 display: flex;
-margin-bottom: 2rem;
+margin-bottom: 1rem;
 `
 
 export const ContainerInfo = styled.div`
@@ -14,7 +14,7 @@ export const ContainerInfo = styled.div`
   background-color: ${(props) => props.backgroundColor};
 
   &:nth-child(2){
-    margin: 0 2rem;
+    margin: 0 1rem;
   }
 
   img{

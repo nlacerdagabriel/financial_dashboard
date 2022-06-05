@@ -12,7 +12,7 @@ export const Container = styled.div`
 
     
   &:first-child{
-    margin-right: 2rem;
+    margin-right: 1rem;
   }
 
   svg{

@@ -7,8 +7,10 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     border-radius: 0.5rem;
+    margin-bottom: 1rem;
     overflow: hidden;
-    margin-bottom: 1.2rem;
+    border: 1px solid ${props => props.colorBorder};
+    
 `
 
 export const Icon = styled.div`
@@ -17,6 +19,7 @@ export const Icon = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: ${props => props.bgColor};
 `
 
 export const Input = styled.input`
@@ -25,5 +28,6 @@ export const Input = styled.input`
     height: 100%;
     font-size: 0.9rem;
     border: none;
-    color: rgba(0,0,0,0.7);
+    color: ${props => props.colorText};
+    background-color: ${props => props.bgColor};
 `

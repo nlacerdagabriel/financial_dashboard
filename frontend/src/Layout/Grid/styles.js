@@ -19,6 +19,11 @@ export const Sidebar = styled.nav`
     margin-bottom: 1.5rem;
     list-style: none;
 
+    a{
+      display: flex;
+      align-items: center;
+    }
+
     p {
         margin-left: 0.5rem;
         color: var(--white);

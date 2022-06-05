@@ -4,6 +4,7 @@ import { RiLayout3Fill, RiMoneyDollarCircleFill } from "react-icons/ri";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 import { BsArrowDownUp } from "react-icons/bs";
 import { MdOutlineExitToApp } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default ({ children }) => {
   return (
@@ -11,17 +12,24 @@ export default ({ children }) => {
       <C.Sidebar>
         <ul>
           <li>
-            <RiLayout3Fill size={26} color="#09C0FA" />
-            <p>Dashboard</p>
+            <Link to="/">
+              <RiLayout3Fill size={26} color="#09C0FA" />
+              <p>Dashboard</p>
+            </Link>
           </li>
           <li>
-            <RiMoneyDollarCircleFill size={26} color="#09C0FA" />
-            <p>New transaction</p>
+            <Link to="/new-transaction">
+              <RiMoneyDollarCircleFill size={26} color="#09C0FA" />
+              <p>New transaction</p>
+            </Link>
           </li>
           <li>
-            <BsArrowDownUp size={26} color="#09C0FA" />
-            <p>All transactions</p>
+            <Link to="/transactions">
+              <BsArrowDownUp size={26} color="#09C0FA" />
+              <p>All transactions</p>
+            </Link>
           </li>
+
           <li>
             <AiOutlineArrowUp size={26} color="#09C0FA" />
             <p>Incomes</p>

@@ -16,16 +16,16 @@ export default () => {
     <C.Container>
       <CardForm>
         <h1>Register</h1>
-        <InputWithIcon placeholder='Name'>
+        <InputWithIcon colorText="rgba(0,0,0,0.7)" bgColor="var(--white)" placeholder='Name'>
           <FaUserCircle size={26} color='#1E2633' />
         </InputWithIcon>
-        <InputWithIcon placeholder='E-mail'>
+        <InputWithIcon colorText="rgba(0,0,0,0.7)" bgColor="var(--white)" placeholder='E-mail'>
           <MdEmail size={26} color='#1E2633' />
         </InputWithIcon>
-        <InputWithIcon placeholder='Password'>
+        <InputWithIcon colorText="rgba(0,0,0,0.7)" bgColor="var(--white)" placeholder='Password'>
           <FaLock size={23} color='#1E2633' />
         </InputWithIcon>
-        <InputWithIcon placeholder='Confirm your password'>
+        <InputWithIcon colorText="rgba(0,0,0,0.7)" bgColor="var(--white)" placeholder='Confirm your password'>
           <FaLock size={23} color='#1E2633' />
         </InputWithIcon>
         <Button>Register</Button>

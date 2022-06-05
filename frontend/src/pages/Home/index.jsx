@@ -6,7 +6,8 @@ import Grid from "../../Layout/Grid";
 import Header from "../../components/Header";
 import InfoMoney from "../../components/InfoMoney";
 import PieChart from "../../components/PieChart";
-import BarChart from "../../components/BarChart";
+import CardTransaction from "../../components/CardTransaction";
+import { Link } from "react-router-dom";
 
 export default () => {
   const navigate = useNavigate();
@@ -21,12 +22,19 @@ export default () => {
 
   return (
     <Grid>
-      <Header>Dashboard</Header>
-      <InfoMoney />
-      <C.Graphics>
-        <PieChart/>
-        <PieChart/>
-      </C.Graphics>
+        <Header showSelect={true}>Dashboard</Header>
+      <C.Container>
+        <InfoMoney />
+        <C.Graphics>
+          <PieChart />
+          <PieChart />
+        </C.Graphics>
+        <C.ContainerTransactions>
+          <CardTransaction />
+          <CardTransaction />
+        </C.ContainerTransactions>
+        <Link to="/transactions">See all transactions</Link>
+      </C.Container>
     </Grid>
   );
 };
