@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-   width: 100%;
-    position: relative;
+   position: relative;
 
     label {
       position: absolute;
@@ -25,7 +24,6 @@ export const Container = styled.div`
     select:focus + label {
       color: var(--primary-light);
     }
-  }
 
   select{
     height: 40px;
@@ -39,4 +37,6 @@ export const Container = styled.div`
     &:focus{
       border-color: var(--primary-light);
     }
+
+  }
 `;

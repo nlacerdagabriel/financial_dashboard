@@ -4,9 +4,15 @@ import { RiLayout3Fill, RiMoneyDollarCircleFill } from "react-icons/ri";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 import { BsArrowDownUp } from "react-icons/bs";
 import { MdOutlineExitToApp } from "react-icons/md";
+import { BiCategoryAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import {useContext} from 'react'
+import {AuthContext} from '../../contexts/AuthContext'
 
 export default ({ children }) => {
+
+  const {user, logout} =  useContext(AuthContext)
+
   return (
     <C.Container>
       <C.Sidebar>
@@ -24,6 +30,12 @@ export default ({ children }) => {
             </Link>
           </li>
           <li>
+            <Link to="/new-transaction">
+              <BiCategoryAlt size={26} color="#09C0FA" />
+              <p>New category</p>
+            </Link>
+          </li>
+          <li>
             <Link to="/transactions">
               <BsArrowDownUp size={26} color="#09C0FA" />
               <p>All transactions</p>
@@ -38,9 +50,9 @@ export default ({ children }) => {
             <AiOutlineArrowDown size={26} color="#09C0FA" />
             <p>Outcomes</p>
           </li>
-          <li>
+          <li style={{cursor: 'pointer'}}>
             <MdOutlineExitToApp size={26} color="#09C0FA" />
-            <p>Exit</p>
+            <p onClick={logout}>Exit</p>
           </li>
         </ul>
       </C.Sidebar>
@@ -49,7 +61,7 @@ export default ({ children }) => {
         <C.Header>
           <div>
             <p>Olá,🤑</p>
-            <p>Gabriel Lacerda</p>
+            <p>{user.name}</p>
           </div>
         </C.Header>
 

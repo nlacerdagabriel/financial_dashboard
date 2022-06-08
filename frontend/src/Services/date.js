@@ -31,3 +31,5 @@ export const currentMonth = new Date().toLocaleString("en-US", {
 });
 
 export const currentYear = new Date().getFullYear();
+
+export const currentDate = new Date()

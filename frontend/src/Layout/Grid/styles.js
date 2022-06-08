@@ -52,6 +52,7 @@ export const Header = styled.div`
 
     p {
       color: var(--white);
+      text-transform: capitalize;
 
       &:first-child {
         font-size: 1.7rem;

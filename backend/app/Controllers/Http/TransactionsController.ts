@@ -15,6 +15,9 @@ export default class TransactionsController {
   }
 
   public async store({ request, response, auth }: HttpContextContract) {
+    const userId = auth.use('api').user?.id
+    console.log('userId:', userId)
+    
     const TransactionSchema = schema.create({
       name: schema.string({}, [rules.minLength(1)]),
       type: schema.string(),
@@ -25,13 +28,13 @@ export default class TransactionsController {
 
     const payload = await request.validate({ schema: TransactionSchema })
 
-    const categoryExists = await Category.findBy('name', payload.category)
+    //const categoryExists = await Category.findBy('name', payload.category)
 
-    if(!categoryExists){
-      return response.json({message: 'Category does not exists.'})
-    }
+    //if(!categoryExists){
+    //  return response.json({message: 'Category does not exists.'})
+    //}
     
-    const userId = auth.use('api').user?.id
+
 
     const transaction = await Transaction.create({ user_id: userId, ...payload })
 
