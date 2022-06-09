@@ -32,4 +32,15 @@ export const currentMonth = new Date().toLocaleString("en-US", {
 
 export const currentYear = new Date().getFullYear();
 
-export const currentDate = new Date()
+export const currentDate = new Date();
+
+export function formatDate(date) {
+  const newDate = new Date(date);
+  const year = newDate.getFullYear();
+  const day = newDate.getDate();
+  const month = newDate.getMonth() + 1;
+
+  return `${day < 9 ? "0" + day : day}/${
+    month < 9 ? "0" + month : month
+  }/${year}`;
+}

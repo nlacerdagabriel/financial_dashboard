@@ -1,16 +1,22 @@
-import * as C from './styles'
+import { formatDate } from "../../services/date";
+import * as C from "./styles";
 
-export default () => {
-  return(
+export default ({ title, category, value, date }) => {
+  return (
     <C.Container>
       <C.ContainerNameCategory>
-        <p>Netflix</p>
-        <p>Filmes</p>
+        <p>{title}</p>
+        <p>{category}</p>
       </C.ContainerNameCategory>
       <C.ContainerValueDate>
-        <p>R$ 23,99</p>
-        <p>18/05/2022</p>
+        <p>
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(value)}
+        </p>
+        <p>{formatDate(date)}</p>
       </C.ContainerValueDate>
     </C.Container>
-  )
-}
+  );
+};

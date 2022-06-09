@@ -16,7 +16,6 @@ export default class TransactionsController {
 
   public async store({ request, response, auth }: HttpContextContract) {
     const userId = auth.use('api').user?.id
-    console.log('userId:', userId)
     
     const TransactionSchema = schema.create({
       name: schema.string({}, [rules.minLength(1)]),

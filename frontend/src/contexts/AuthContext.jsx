@@ -1,6 +1,11 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { createSession, createUser, api, exitSession } from "../services/UserServices";
+import {
+  createSession,
+  createUser,
+  exitSession,
+} from "../services/UserServices";
+import { api } from "../services/api";
 
 export const AuthContext = createContext();
 
@@ -26,7 +31,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(response.data.user));
     localStorage.setItem("token", JSON.stringify(response.data.token.token));
 
-   setUser(response.data.user);
+    setUser(response.data.user);
 
     navigate("/");
   }
@@ -43,8 +48,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   async function logout() {
-
-    await exitSession()
+    await exitSession();
     
     localStorage.removeItem("user");
     localStorage.removeItem("token");

@@ -30,12 +30,6 @@ export default ({ children }) => {
             </Link>
           </li>
           <li>
-            <Link to="/new-transaction">
-              <BiCategoryAlt size={26} color="#09C0FA" />
-              <p>New category</p>
-            </Link>
-          </li>
-          <li>
             <Link to="/transactions">
               <BsArrowDownUp size={26} color="#09C0FA" />
               <p>All transactions</p>

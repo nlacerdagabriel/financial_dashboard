@@ -31,6 +31,7 @@ export const ContainerNameCategory = styled.div`
 export const ContainerValueDate = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
 
   p:first-child {
     font-size: 1.5rem;

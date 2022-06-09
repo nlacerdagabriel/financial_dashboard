@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ContainerTransactions = styled.div`
   max-height: 87%;
+  min-height: 87%;
   overflow-y: scroll;
   padding-right: 1rem;
 

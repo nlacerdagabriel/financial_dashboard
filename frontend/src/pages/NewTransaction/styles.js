@@ -14,31 +14,28 @@ export const Form = styled.form`
   flex-direction: column;
   width: 100%;
 
-  & > div:first-child {
-    margin-bottom: 4rem;
-  }
-
-  & > .inputs {
-
-    &> div:first-child select{
-      padding-left: 1rem;
-    }
-
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 4rem;
-
-    & > div:nth-child(2) {
-      margin: 0 2rem;
-    }
-  }
-
   input {
-  color-scheme: dark;
-}
+    color-scheme: dark;
+  }
+`;
 
+export const ContainerInputs = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4rem;
+  
+  .inputDate{
+    margin: 0 3rem;
+  }
 
+  .inputTitle{
+    margin-right: 3rem;
+  }
+
+  .inputType > select{
+    padding-left: 0.8rem;
+  }
 `;
 
 export const ContainerButtons = styled.div`
@@ -78,7 +75,7 @@ export const ContainerButtons = styled.div`
       }
     }
 
-    button:first-child {
+    a button:first-child {
       margin-right: 1rem;
       background-color: var(--danger);
     }
