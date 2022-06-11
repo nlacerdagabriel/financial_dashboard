@@ -1,16 +1,16 @@
 /* eslint-disable import/no-anonymous-default-export */
 import * as C from "./styles";
 import { months, years, currentMonth, currentYear } from "../../services/date";
-import { useEffect, useState } from "react";
-import InputLabel from "@mui/material/InputLabel";
+import { useEffect } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 
 export default ({ children, showSelect }) => {
-  const [month, setMonth] = useState(`${currentMonth}`);
-  const [year, setYear] = useState(`${currentYear}`);
-
+  const { month, year, changeMonth, changeYear } = useContext(AppContext);
+  
   return (
     <C.Container>
       <C.Title>{children}</C.Title>
@@ -30,7 +30,7 @@ export default ({ children, showSelect }) => {
                 }}
                 className="selectComponent"
                 value={month}
-                onChange={(e) => setMonth(e.target.value)}
+                onChange={(e) => changeMonth(e.target.value)}
               >
                 {months.map((it) => (
                   <MenuItem value={it}>{it}</MenuItem>
@@ -50,7 +50,7 @@ export default ({ children, showSelect }) => {
                 }}
                 className="selectComponent"
                 value={year}
-                onChange={(e) => setYear(e.target.value)}
+                onChange={(e) => changeYear(e.target.value)}
               >
                 {years.map((it) => (
                   <MenuItem value={it}>{it}</MenuItem>

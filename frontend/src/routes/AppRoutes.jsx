@@ -5,6 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { AuthProvider } from "../contexts/AuthContext";
+import { AppProvider } from "../contexts/AppContext";
 import Register from "../pages/Register";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -35,49 +36,51 @@ export default () => {
   return (
     <Router>
       <AuthProvider>
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <PrivateApp>
-                <Home />
-              </PrivateApp>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <PrivateLogin>
-                <Register />
-              </PrivateLogin>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <PrivateLogin>
-                <Login />
-              </PrivateLogin>
-            }
-          />
-          <Route
-            path="/transactions"
-            element={
-              <PrivateApp>
-                <Transactions />
-              </PrivateApp>
-            }
-          />
-          <Route
-            path="/new-transaction"
-            element={
-              <PrivateApp>
-                <NewTransaction />
-              </PrivateApp>
-            }
-          />
-        </Routes>
+        <AppProvider>
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <PrivateApp>
+                  <Home />
+                </PrivateApp>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <PrivateLogin>
+                  <Register />
+                </PrivateLogin>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PrivateLogin>
+                  <Login />
+                </PrivateLogin>
+              }
+            />
+            <Route
+              path="/transactions"
+              element={
+                <PrivateApp>
+                  <Transactions />
+                </PrivateApp>
+              }
+            />
+            <Route
+              path="/new-transaction"
+              element={
+                <PrivateApp>
+                  <NewTransaction />
+                </PrivateApp>
+              }
+            />
+          </Routes>
+        </AppProvider>
       </AuthProvider>
     </Router>
   );

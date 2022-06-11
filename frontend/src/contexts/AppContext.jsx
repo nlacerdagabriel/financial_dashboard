@@ -1,27 +1,48 @@
-import { createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { createSession, createUser, api, exitSession } from "../services/api";
+import { createContext, useEffect, useState } from "react";
+import { currentMonth, currentYear, months } from "../services/date";
+import { api } from "../services/api";
 
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [modalCreateCategoryIsOpen, setModalCreateCategoryIsOpen] =
-    useState(false);
+  const [month, setMonth] = useState(`${currentMonth}`);
+  const [year, setYear] = useState(`${currentYear}`);
+  const [transactionsList, setTransactionsList] = useState([]);
+  const token = localStorage.getItem("token");
 
-  function closeModalCreateCategory() {
-    setModalCreateCategoryIsOpen(false);
+  async function getAllTransactions() {
+    let monthFiltered;
+
+    for (let x = 0; x < months.length; x++) {
+      if (months[x] == month) {
+        monthFiltered = x;
+      }
+    }
+
+    console.log(monthFiltered + 1, +year)
+    return await api.get(`/transaction/?month=0${monthFiltered + 1}&year=${+year}`, {
+      headers: { Authorization: `Bearer ${JSON.parse(token)}` },
+    });
   }
 
-  function openModalCreateCategory() {
-    setModalCreateCategoryIsOpen(false);
+  function changeMonth(mt) {
+    setMonth(mt);
+  }
+
+  function changeYear(yr) {
+    setYear(yr);
   }
 
   return (
     <AppContext.Provider
       value={{
-        modalCreateCategoryIsOpen,
-        closeModalCreateCategory,
-        openModalCreateCategory,
+        month,
+        year,
+        changeMonth,
+        changeYear,
+        transactionsList,
+        setTransactionsList,
+        getAllTransactions,
       }}
     >
       {children}

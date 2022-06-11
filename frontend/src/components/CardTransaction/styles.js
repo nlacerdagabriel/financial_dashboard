@@ -5,7 +5,8 @@ export const Container = styled.div`
   width: 100%;
   background-color: var(--bg-light);
   padding: 1.25rem;
-  border-left: 2rem solid var(--success);
+  border-left: 2rem solid;
+  border-color: ${props => props.borderColor};
   border-radius: 1.25rem;
   display: flex;
   justify-content: space-between;

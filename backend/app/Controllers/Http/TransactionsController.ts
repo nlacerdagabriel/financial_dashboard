@@ -1,22 +1,29 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
-import Category from 'App/Models/Category'
 import Transaction from 'App/Models/Transaction'
 
 export default class TransactionsController {
-  public async index({ auth }: HttpContextContract) {
+  public async index({ auth, request }: HttpContextContract) {
+
+    const date = request.qs()
+    let montht = date.month;
+    let yeart = date.year;
 
     const userId = auth.use("api").user!.id
 
     const transactions = await Transaction.query().where('user_id', userId)
 
-    return transactions
+    const transactionsFilteredByDate = transactions.filter((item) =>
+      (`0` + item.date.month == montht) &&
+      (item.date.year == yeart) && item
+    )
 
+    return transactionsFilteredByDate
   }
 
   public async store({ request, response, auth }: HttpContextContract) {
     const userId = auth.use('api').user?.id
-    
+
     const TransactionSchema = schema.create({
       name: schema.string({}, [rules.minLength(1)]),
       type: schema.string(),
@@ -26,14 +33,6 @@ export default class TransactionsController {
     })
 
     const payload = await request.validate({ schema: TransactionSchema })
-
-    //const categoryExists = await Category.findBy('name', payload.category)
-
-    //if(!categoryExists){
-    //  return response.json({message: 'Category does not exists.'})
-    //}
-    
-
 
     const transaction = await Transaction.create({ user_id: userId, ...payload })
 
