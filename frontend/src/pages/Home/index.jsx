@@ -8,23 +8,88 @@ import PieChart from "../../components/PieChart";
 import CardTransaction from "../../components/CardTransaction";
 import { Link } from "react-router-dom";
 import FeedbackHome from "../../components/FeedbackHome";
+import { currentMonth, currentYear } from "../../services/date";
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
+import Loading from "../../components/Loading";
+import NoInfoHome from "../../components/NoInfoHome";
 
 export default () => {
+  const {
+    changeMonth,
+    changeYear,
+    getAllTransactions,
+    setLoading,
+    loading,
+    setTransactionsList,
+    transactionsList,
+    month,
+    year,
+  } = useContext(AppContext);
 
+  const summary = transactionsList.reduce(
+    (acc, transaction) => {
+      if (transaction.type == "Income") {
+        acc.incomes += +transaction.value;
+        acc.total += +transaction.value;
+      } else {
+        acc.outcomes += +transaction.value;
+        acc.total -= +transaction.value;
+      }
+
+      return acc;
+    },
+    {
+      incomes: 0,
+      outcomes: 0,
+      total: 0,
+    }
+  );
+
+  useEffect(() => {
+    changeMonth(currentMonth);
+    changeYear(currentYear);
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      async function getData() {
+        const response = await getAllTransactions();
+        setTransactionsList(response.data);
+        setLoading(false);
+      }
+
+      getData();
+    }, 100);
+  }, [month, year]);
   return (
     <Grid>
-        <Header showSelect={true}>Dashboard</Header>
+      <Header showSelect={true}>Dashboard</Header>
       <C.Container>
-        <InfoMoney />
-        <C.Graphics>
-          <FeedbackHome/>
-          <PieChart />
-        </C.Graphics>
-        <C.ContainerTransactions>
-          <CardTransaction />
-          <CardTransaction />
-        </C.ContainerTransactions>
-        <Link to="/transactions">See all transactions</Link>
+        <InfoMoney summary={summary} />
+        {transactionsList.length == 0 && <NoInfoHome />}
+        {transactionsList.length > 0 && (
+          <>
+            <C.Graphics>
+              <FeedbackHome total={summary.total} />
+              <PieChart />
+            </C.Graphics>
+            <C.ContainerTransactions>
+              {loading && <Loading />}
+              {transactionsList.map((it, index) => (
+                <CardTransaction
+                  type={it.type}
+                  title={it.name}
+                  value={it.value}
+                  date={it.date}
+                  category={it.category}
+                  key={index}
+                />
+              ))}
+            </C.ContainerTransactions>
+            <Link to="/transactions">See all transactions</Link>
+          </>
+        )}
       </C.Container>
     </Grid>
   );

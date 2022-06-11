@@ -1,10 +1,15 @@
-import { useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
-import { api } from "./api";
 
-const token = localStorage.getItem("token");
+import { api } from "./api";
+import {capitalizeWord} from '../utils/capitalizeWord'
+import {getToken} from '../utils/getToken'
+
+const token = getToken();
 
 export async function createTransaction(name, category, type, date, value) {
+
+  name = capitalizeWord(name)
+  category = capitalizeWord(category)
+  
   return await api.post(
     "/transaction",
     { name, category, type, date, value },

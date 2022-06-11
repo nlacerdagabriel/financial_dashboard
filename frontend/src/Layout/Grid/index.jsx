@@ -4,14 +4,12 @@ import { RiLayout3Fill, RiMoneyDollarCircleFill } from "react-icons/ri";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 import { BsArrowDownUp } from "react-icons/bs";
 import { MdOutlineExitToApp } from "react-icons/md";
-import { BiCategoryAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import {useContext} from 'react'
-import {AuthContext} from '../../contexts/AuthContext'
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default ({ children }) => {
-
-  const {user, logout} =  useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <C.Container>
@@ -37,14 +35,19 @@ export default ({ children }) => {
           </li>
 
           <li>
-            <AiOutlineArrowUp size={26} color="#09C0FA" />
-            <p>Incomes</p>
+            <Link to="/transactions/incomes">
+              <AiOutlineArrowUp size={26} color="#09C0FA" />
+              <p>Incomes</p>
+            </Link>
           </li>
+
           <li>
-            <AiOutlineArrowDown size={26} color="#09C0FA" />
-            <p>Outcomes</p>
+            <Link to="/transactions/outcomes">
+              <AiOutlineArrowDown size={26} color="#09C0FA" />
+              <p>Outcomes</p>
+            </Link>
           </li>
-          <li style={{cursor: 'pointer'}}>
+          <li style={{ cursor: "pointer" }}>
             <MdOutlineExitToApp size={26} color="#09C0FA" />
             <p onClick={logout}>Exit</p>
           </li>

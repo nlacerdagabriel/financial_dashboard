@@ -21,6 +21,42 @@ export default class TransactionsController {
     return transactionsFilteredByDate
   }
 
+  public async incomes({ auth, request }: HttpContextContract) {
+
+    const date = request.qs()
+    let montht = date.month;
+    let yeart = date.year;
+
+    const userId = auth.use("api").user!.id
+
+    const transactions = await Transaction.query().where('user_id', userId).where('type', 'Income')
+
+    const transactionsFilteredByDate = transactions.filter((item) =>
+      (`0` + item.date.month == montht) &&
+      (item.date.year == yeart) && item
+    )
+
+    return transactionsFilteredByDate
+  }
+
+  public async outcomes({ auth, request }: HttpContextContract) {
+
+    const date = request.qs()
+    let montht = date.month;
+    let yeart = date.year;
+
+    const userId = auth.use("api").user!.id
+
+    const transactions = await Transaction.query().where('user_id', userId).where('type', 'Outcome')
+
+    const transactionsFilteredByDate = transactions.filter((item) =>
+      (`0` + item.date.month == montht) &&
+      (item.date.year == yeart) && item
+    )
+
+    return transactionsFilteredByDate
+  }
+
   public async store({ request, response, auth }: HttpContextContract) {
     const userId = auth.use('api').user?.id
 

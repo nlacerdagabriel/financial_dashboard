@@ -11,6 +11,8 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Transactions from "../pages/Transactions";
 import NewTransaction from "../pages/NewTransaction";
+import Incomes from "../pages/Incomes";
+import Outcomes from "../pages/Outcomes";
 
 export default () => {
   function PrivateApp({ children }) {
@@ -68,6 +70,22 @@ export default () => {
               element={
                 <PrivateApp>
                   <Transactions />
+                </PrivateApp>
+              }
+            />
+            <Route
+              path="/transactions/incomes"
+              element={
+                <PrivateApp>
+                  <Incomes />
+                </PrivateApp>
+              }
+            />
+            <Route
+              path="/transactions/outcomes"
+              element={
+                <PrivateApp>
+                  <Outcomes />
                 </PrivateApp>
               }
             />

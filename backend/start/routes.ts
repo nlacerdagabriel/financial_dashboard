@@ -32,6 +32,8 @@ Route.group(() => {
 
   Route.group(() => {
     Route.get('/', 'TransactionsController.index')
+    Route.get('/incomes', 'TransactionsController.incomes')
+    Route.get('/outcomes', 'TransactionsController.outcomes')
     Route.post('/', 'TransactionsController.store')
     Route.get('/:id', 'TransactionsController.show')
     Route.post('/:id', 'TransactionsController.update')

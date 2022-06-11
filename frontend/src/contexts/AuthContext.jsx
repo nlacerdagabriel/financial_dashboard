@@ -12,13 +12,13 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
+  const userLocal = JSON.parse(localStorage.getItem("user"));
+  const token = JSON.parse(localStorage.getItem("token"));
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = JSON.parse(localStorage.getItem("token"));
 
-    if (user && token) {
-      setUser(user);
+    if (userLocal && token) {
+      setUser(userLocal);
       api.defaults.headers.Authorization = `Bearer ${token}`;
     }
   }, []);
@@ -52,9 +52,11 @@ export const AuthProvider = ({ children }) => {
     
     localStorage.removeItem("user");
     localStorage.removeItem("token");
+
     api.defaults.headers.Authorization = null;
     setUser(null);
     navigate("/login");
+
   }
 
   return (
