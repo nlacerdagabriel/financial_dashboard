@@ -15,13 +15,6 @@ export const AuthProvider = ({ children }) => {
   const userLocal = JSON.parse(localStorage.getItem("user"));
   const token = JSON.parse(localStorage.getItem("token"));
 
-  useEffect(() => {
-
-    if (userLocal && token) {
-      setUser(userLocal);
-      api.defaults.headers.Authorization = `Bearer ${token}`;
-    }
-  }, []);
 
   async function register(name, email, password, confirmPassword) {
     const response = await createUser(name, email, password, confirmPassword);
