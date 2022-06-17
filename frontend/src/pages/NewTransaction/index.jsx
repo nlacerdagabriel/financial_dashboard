@@ -1,5 +1,5 @@
 import * as C from "./styles";
-import Grid from "../../Layout/Grid";
+import Grid from "../../layout/Grid";
 import Header from "../../components/Header";
 import { useState } from "react";
 import AnimatedInput from "../../components/AnimatedInput";

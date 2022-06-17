@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from "react";
 import * as C from "./styles";
-import Grid from "../../Layout/Grid";
+import Grid from "../../layout/Grid";
 import Header from "../../components/Header";
 import InfoMoney from "../../components/InfoMoney";
 import PieChart from "../../components/PieChart";
