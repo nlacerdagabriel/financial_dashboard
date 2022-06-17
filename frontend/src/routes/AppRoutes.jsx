@@ -13,6 +13,7 @@ import Transactions from "../pages/Transactions";
 import NewTransaction from "../pages/NewTransaction";
 import Incomes from "../pages/Incomes";
 import Outcomes from "../pages/Outcomes";
+import UpdateTransaction from "../pages/UpdateTransaction";
 
 export default () => {
   function PrivateApp({ children }) {
@@ -94,6 +95,14 @@ export default () => {
               element={
                 <PrivateApp>
                   <NewTransaction />
+                </PrivateApp>
+              }
+            />
+            <Route
+              path="/update-transaction/:id"
+              element={
+                <PrivateApp>
+                  <UpdateTransaction />
                 </PrivateApp>
               }
             />

@@ -42,7 +42,7 @@ export const ContainerButtons = styled.div`
   width: 100%;
 
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 
   button {

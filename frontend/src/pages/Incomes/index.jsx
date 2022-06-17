@@ -31,7 +31,7 @@ export default () => {
       async function getData() {
         const response = await getAllIncomes();
         setTransactionsList(response.data);
-        setLoading(false)
+        setLoading(false);
       }
 
       getData();
@@ -40,11 +40,12 @@ export default () => {
 
   return (
     <Grid>
-      <Header showSelect={true}>Transactions</Header>
+      <Header showSelect={true}>Incomes</Header>
       <C.ContainerTransactions>
         {loading && <Loading />}
         {transactionsList.map((it, index) => (
           <CardTransaction
+            id={it.id}
             type={it.type}
             title={it.name}
             value={it.value}

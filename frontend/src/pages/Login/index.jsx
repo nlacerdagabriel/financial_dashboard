@@ -8,7 +8,6 @@ import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import cashImage from '../../'
 
 export default () => {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ export default () => {
   }
 
   return (
-    <C.Container style={{backgroundImage: `url('${cashImage}')`}}>
+    <C.Container>
       <CardForm>
         <h1>Login</h1>
         <InputWithIcon

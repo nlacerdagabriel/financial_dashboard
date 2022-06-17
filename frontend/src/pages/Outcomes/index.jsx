@@ -40,12 +40,13 @@ export default () => {
 
   return (
     <Grid>
-      <Header showSelect={true}>Transactions</Header>
+      <Header showSelect={true}>Outcomes</Header>
       <C.ContainerTransactions>
         {loading && <Loading />}
 
         {transactionsList.map((it, index) => (
           <CardTransaction
+          id={it.id}
             type={it.type}
             title={it.name}
             value={it.value}

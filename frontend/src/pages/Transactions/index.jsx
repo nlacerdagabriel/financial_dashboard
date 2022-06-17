@@ -18,7 +18,7 @@ export default () => {
     changeMonth,
     changeYear,
     setLoading,
-    loading
+    loading,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default () => {
       async function getData() {
         const response = await getAllTransactions();
         setTransactionsList(response.data);
-        setLoading(false)
+        setLoading(false);
       }
 
       getData();
@@ -42,10 +42,10 @@ export default () => {
     <Grid>
       <Header showSelect={true}>Transactions</Header>
       <C.ContainerTransactions>
-
-        {loading && <Loading/>}
+        {loading && <Loading />}
         {transactionsList.map((it, index) => (
           <CardTransaction
+            id={it.id}
             type={it.type}
             title={it.name}
             value={it.value}

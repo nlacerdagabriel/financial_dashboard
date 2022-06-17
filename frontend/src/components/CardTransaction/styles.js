@@ -12,6 +12,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  color: var(--white);
 `;
 
 export const ContainerNameCategory = styled.div`

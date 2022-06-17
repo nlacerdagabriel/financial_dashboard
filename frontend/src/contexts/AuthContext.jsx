@@ -12,9 +12,6 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
-  const userLocal = JSON.parse(localStorage.getItem("user"));
-  const token = JSON.parse(localStorage.getItem("token"));
-
 
   async function register(name, email, password, confirmPassword) {
     const response = await createUser(name, email, password, confirmPassword);
