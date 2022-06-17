@@ -16,7 +16,7 @@ export default () => {
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
-  const [type, setType] = useState("")
+  const [type, setType] = useState("");
   const [date, setDate] = useState("");
   const [value, setValue] = useState("");
 
