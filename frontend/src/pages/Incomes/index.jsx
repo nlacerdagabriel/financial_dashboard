@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import CardTransaction from "../../components/CardTransaction";
 import Header from "../../components/Header";
 import Loading from "../../components/Loading";
+import NoInfoMessage from "../../components/NoInfoMessage";
 import { AppContext } from "../../contexts/AppContext";
 import Grid from "../../Layout/Grid";
 import { currentMonth, currentYear } from "../../services/date";
@@ -42,6 +43,7 @@ export default () => {
     <Grid>
       <Header showSelect={true}>Incomes</Header>
       <C.ContainerTransactions>
+      {transactionsList.length == 0 && <NoInfoMessage />}
         {loading && <Loading />}
         {transactionsList.map((it, index) => (
           <CardTransaction

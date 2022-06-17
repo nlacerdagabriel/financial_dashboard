@@ -6,7 +6,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15rem;
 
   p{
     font-size: 1.5rem;

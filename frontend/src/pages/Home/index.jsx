@@ -12,7 +12,7 @@ import { currentMonth, currentYear } from "../../services/date";
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import Loading from "../../components/Loading";
-import NoInfoHome from "../../components/NoInfoHome";
+import NoInfoMessage from "../../components/NoInfoMessage";
 
 export default () => {
   const {
@@ -67,7 +67,7 @@ export default () => {
       <Header showSelect={true}>Dashboard</Header>
       <C.Container>
         <InfoMoney summary={summary} />
-        {transactionsList.length == 0 && <NoInfoHome />}
+        {transactionsList.length == 0 && <NoInfoMessage marginTop='15rem'/>}
         {transactionsList.length > 0 && (
           <>
             <C.Graphics>
