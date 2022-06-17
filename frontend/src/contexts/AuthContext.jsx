@@ -16,8 +16,6 @@ export const AuthProvider = ({ children }) => {
   async function register(name, email, password, confirmPassword) {
     const response = await createUser(name, email, password, confirmPassword);
 
-    console.log(JSON.stringify(response.data.user.name));
-
     localStorage.setItem("user", JSON.stringify(response.data.user));
     localStorage.setItem("token", JSON.stringify(response.data.token.token));
 

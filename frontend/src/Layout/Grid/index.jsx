@@ -10,7 +10,6 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export default ({ children }) => {
   const { user, logout } = useContext(AuthContext);
-  console.log(JSON.stringify(user))
 
   return (
     <C.Container>

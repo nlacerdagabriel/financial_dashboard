@@ -14,6 +14,7 @@ import NewTransaction from "../pages/NewTransaction";
 import Incomes from "../pages/Incomes";
 import Outcomes from "../pages/Outcomes";
 import UpdateTransaction from "../pages/UpdateTransaction";
+import { TransactionsProvider } from "../contexts/TransactionsContext";
 
 export default () => {
   function PrivateApp({ children }) {
@@ -40,73 +41,75 @@ export default () => {
     <Router>
       <AuthProvider>
         <AppProvider>
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                <PrivateApp>
-                  <Home />
-                </PrivateApp>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <PrivateLogin>
-                  <Register />
-                </PrivateLogin>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <PrivateLogin>
-                  <Login />
-                </PrivateLogin>
-              }
-            />
-            <Route
-              path="/transactions"
-              element={
-                <PrivateApp>
-                  <Transactions />
-                </PrivateApp>
-              }
-            />
-            <Route
-              path="/transactions/incomes"
-              element={
-                <PrivateApp>
-                  <Incomes />
-                </PrivateApp>
-              }
-            />
-            <Route
-              path="/transactions/outcomes"
-              element={
-                <PrivateApp>
-                  <Outcomes />
-                </PrivateApp>
-              }
-            />
-            <Route
-              path="/new-transaction"
-              element={
-                <PrivateApp>
-                  <NewTransaction />
-                </PrivateApp>
-              }
-            />
-            <Route
-              path="/update-transaction/:id"
-              element={
-                <PrivateApp>
-                  <UpdateTransaction />
-                </PrivateApp>
-              }
-            />
-          </Routes>
+          <TransactionsProvider>
+            <Routes>
+              <Route
+                exact
+                path="/"
+                element={
+                  <PrivateApp>
+                    <Home />
+                  </PrivateApp>
+                }
+              />
+              <Route
+                path="/register"
+                element={
+                  <PrivateLogin>
+                    <Register />
+                  </PrivateLogin>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <PrivateLogin>
+                    <Login />
+                  </PrivateLogin>
+                }
+              />
+              <Route
+                path="/transactions"
+                element={
+                  <PrivateApp>
+                    <Transactions />
+                  </PrivateApp>
+                }
+              />
+              <Route
+                path="/transactions/incomes"
+                element={
+                  <PrivateApp>
+                    <Incomes />
+                  </PrivateApp>
+                }
+              />
+              <Route
+                path="/transactions/outcomes"
+                element={
+                  <PrivateApp>
+                    <Outcomes />
+                  </PrivateApp>
+                }
+              />
+              <Route
+                path="/new-transaction"
+                element={
+                  <PrivateApp>
+                    <NewTransaction />
+                  </PrivateApp>
+                }
+              />
+              <Route
+                path="/update-transaction/:id"
+                element={
+                  <PrivateApp>
+                    <UpdateTransaction />
+                  </PrivateApp>
+                }
+              />
+            </Routes>
+          </TransactionsProvider>
         </AppProvider>
       </AuthProvider>
     </Router>

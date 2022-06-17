@@ -1,11 +1,19 @@
 /* eslint-disable import/no-anonymous-default-export */
 import * as C from "./styles";
 import { PieChart } from "react-minimal-pie-chart";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
+import { useState } from "react";
+import { TransactionsContext } from "../../contexts/TransactionsContext";
 
 export default () => {
+
+  const {incomesValue, outcomesValue, totalValue} = useContext(TransactionsContext)
+  
   const data = [
-    { title: "One", value: 40, color: "var(--success)" },
-    { title: "Two", value: 15, color: "var(--danger)" },
+    { title: "Incomes", value: incomesValue, color: "var(--success)" },
+    { title: "Outcomes", value: outcomesValue, color: "var(--danger)" },
   ];
 
   return (
@@ -15,14 +23,14 @@ export default () => {
 
         <C.DataInfo backgroundColor="var(--success)">
           <div>
-            <p>40%</p>
+            <p>{Math.ceil(incomesValue / (incomesValue + outcomesValue) * 100)}%</p>
           </div>
 
           <p>Incomes</p>
         </C.DataInfo>
         <C.DataInfo backgroundColor="var(--danger)">
           <div>
-            <p>40%</p>
+            <p>{Math.floor(outcomesValue / (incomesValue + outcomesValue) * 100)}%</p>
           </div>
 
           <p>Outcomes</p>

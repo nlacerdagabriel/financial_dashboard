@@ -11,6 +11,7 @@ import FeedbackHome from "../../components/FeedbackHome";
 import { currentMonth, currentYear } from "../../services/date";
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
+import { TransactionsContext } from "../../contexts/TransactionsContext";
 import Loading from "../../components/Loading";
 import NoInfoMessage from "../../components/NoInfoMessage";
 
@@ -26,25 +27,6 @@ export default () => {
     month,
     year,
   } = useContext(AppContext);
-
-  const summary = transactionsList.reduce(
-    (acc, transaction) => {
-      if (transaction.type == "Income") {
-        acc.incomes += +transaction.value;
-        acc.total += +transaction.value;
-      } else {
-        acc.outcomes += +transaction.value;
-        acc.total -= +transaction.value;
-      }
-
-      return acc;
-    },
-    {
-      incomes: 0,
-      outcomes: 0,
-      total: 0,
-    }
-  );
 
   useEffect(() => {
     changeMonth(currentMonth);
@@ -66,12 +48,12 @@ export default () => {
     <Grid>
       <Header showSelect={true}>Dashboard</Header>
       <C.Container>
-        <InfoMoney summary={summary} />
-        {transactionsList.length == 0 && <NoInfoMessage marginTop='15rem'/>}
+        <InfoMoney />
+        {transactionsList.length == 0 && <NoInfoMessage marginTop="15rem" />}
         {transactionsList.length > 0 && (
           <>
             <C.Graphics>
-              <FeedbackHome total={summary.total} />
+              <FeedbackHome />
               <PieChart />
             </C.Graphics>
             <C.ContainerTransactions>

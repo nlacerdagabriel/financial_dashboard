@@ -1,9 +1,14 @@
+import { useContext } from "react";
+import { TransactionsContext } from "../../contexts/TransactionsContext";
 import * as C from "./styles";
 
 export default ({ total }) => {
+
+  const {totalValue} = useContext(TransactionsContext)
+
   return (
     <C.Container>
-      {total > 0 && (
+      {totalValue > 0 && (
         <>
           <h2>
             Very good, <br />
@@ -12,7 +17,7 @@ export default ({ total }) => {
           <p>Keep it up! Consider investing your money...</p>
         </>
       )}
-      {total < 0 && (
+      {totalValue < 0 && (
         <>
           <h2>
             That's bad, <br />
