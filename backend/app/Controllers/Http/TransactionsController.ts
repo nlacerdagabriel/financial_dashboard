@@ -89,6 +89,7 @@ export default class TransactionsController {
     const TransactionSchema = schema.create({
       name: schema.string({}, [rules.minLength(1)]),
       type: schema.string(),
+      category: schema.string(),
       date: schema.date(),
       value: schema.number(),
     })

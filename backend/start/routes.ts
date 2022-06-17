@@ -36,7 +36,7 @@ Route.group(() => {
     Route.get('/outcomes', 'TransactionsController.outcomes')
     Route.post('/', 'TransactionsController.store')
     Route.get('/:id', 'TransactionsController.show')
-    Route.post('/:id', 'TransactionsController.update')
+    Route.put('/:id', 'TransactionsController.update')
     Route.delete('/:id', 'TransactionsController.delete')
   }).prefix('/transaction').middleware('auth')
 
