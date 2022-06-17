@@ -7,7 +7,6 @@ import React from "react";
 import AnimatedSelect from "../../components/AnimatedSelect";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import {
-  createTransaction,
   deleteTransaction,
   getOneTransaction,
   updateTransaction,
@@ -17,7 +16,7 @@ export default () => {
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("")
   const [date, setDate] = useState("");
   const [value, setValue] = useState("");
 
