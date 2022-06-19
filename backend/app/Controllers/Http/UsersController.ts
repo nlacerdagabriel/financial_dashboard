@@ -7,14 +7,19 @@ export default class UsersController {
 
   public async register({ request, response, auth }: HttpContextContract) {
     const userSchema = schema.create({
-      name: schema.string({ trim: true }),
+      name: schema.string({ trim: true }, [rules.minLength(3)]),
       email: schema.string({ trim: true }, [rules.email(), rules.unique({ table: 'users', column: 'email', caseInsensitive: true })]),
-      password: schema.string({}, [rules.minLength(4)])
+      password: schema.string({}, [rules.minLength(4)]),
+      confirmPassword: schema.string({}, [rules.minLength(4)])
     })
 
+    const {name, email, password, confirmPassword} = await request.validate({ schema: userSchema })
+    
+    if(password !== confirmPassword){
+      return response.status(400).json({message: 'Password and ConfirmPassword must be equals'})
+    }
 
-    const data = await request.validate({ schema: userSchema })
-    const user = await User.create(data)
+    const user = await User.create({name, email, password})
 
     const token = await auth.use('api').generate(user)
 

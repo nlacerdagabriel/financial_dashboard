@@ -6,7 +6,7 @@ import { FaUserCircle, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default () => {
@@ -18,13 +18,14 @@ export default () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     register(name, email, password, confirmPassword);
   }
-  
+
   return (
     <C.Container>
+
       <CardForm>
         <h1>Register</h1>
         <InputWithIcon

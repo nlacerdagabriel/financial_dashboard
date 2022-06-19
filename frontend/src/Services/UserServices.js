@@ -1,11 +1,9 @@
-import {api} from './api'
+import { api } from "./api";
+import { toast } from "react-toastify";
 
 export async function createUser(name, email, password, confirmPassword) {
-  if (password !== confirmPassword) {
-    return alert("senhas n sao iguais");
-  }
 
-  return await api.post("/user/register", { name, email, password });
+  return await api.post("/user/register", { name, email, password, confirmPassword });
 }
 
 export async function createSession(email, password) {

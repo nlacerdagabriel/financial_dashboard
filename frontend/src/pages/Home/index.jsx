@@ -65,8 +65,8 @@ export default () => {
                   value={it.value}
                   date={it.date}
                   category={it.category}
-                  key={index}
-                />
+                  key={it.id}
+                  />
               ))}
             </C.ContainerTransactions>
             <Link to="/transactions">See all transactions</Link>

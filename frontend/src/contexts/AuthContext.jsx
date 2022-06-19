@@ -6,45 +6,94 @@ import {
   exitSession,
 } from "../services/UserServices";
 import { api } from "../services/api";
+import { toast } from "react-toastify";
+import { handleRegisterErrors } from "../utils/validateFieldRegisterPage";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
 
   async function register(name, email, password, confirmPassword) {
-    const response = await createUser(name, email, password, confirmPassword);
+    await createUser(name, email, password, confirmPassword)
+      .then((response) => {
+        toast.success("You've been registered!")
 
-    localStorage.setItem("user", JSON.stringify(response.data.user));
-    localStorage.setItem("token", JSON.stringify(response.data.token.token));
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem(
+          "token",
+          JSON.stringify(response.data.token.token)
+        );
 
-    setUser(response.data.user);
+        setUser(response.data.user);
+        navigate("/");
+      })
+      .catch((error) => {
+        let arrayErrors = [];
+        let arrayMessages = [];
 
-    navigate("/");
+        if (error.response.data.errors) {
+          for (let item of error.response.data.errors) {
+            arrayErrors.push(item);
+          }
+        }else{
+          arrayMessages.push(error.response.data.message)
+        }
+
+        handleRegisterErrors(arrayErrors, arrayMessages);
+
+        arrayErrors = [];
+        arrayMessages = [];
+      });
   }
 
   async function login(email, password) {
-    const response = await createSession(email, password);
+    let arrayErrors = [];
 
-    localStorage.setItem("user", JSON.stringify(response.data.user));
-    localStorage.setItem("token", JSON.stringify(response.data.token.token));
+    if (email.trim() == "") {
+      arrayErrors.push("E-mail");
+    }
 
-    setUser(response.data.user);
+    if (password.trim() == "") {
+      arrayErrors.push("Password");
+    }
 
-    navigate("/");
+    if (arrayErrors.length > 0) {
+      arrayErrors.map((item) => {
+        toast.error(`Field ${item} is required`);
+      });
+      return;
+    }
+
+    await createSession(email, password)
+      .then((response) => {
+        toast.success(`You've been logged!`);
+
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem(
+          "token",
+          JSON.stringify(response.data.token.token)
+        );
+
+        setUser(response.data.user);
+
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error("Invalid E-mail or Password");
+      });
   }
 
   async function logout() {
     await exitSession();
-    
+
     localStorage.removeItem("user");
     localStorage.removeItem("token");
 
     api.defaults.headers.Authorization = null;
     setUser(null);
     navigate("/login");
-
   }
 
   return (

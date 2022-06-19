@@ -7,9 +7,11 @@ import { MdOutlineExitToApp } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { useEffect } from "react";
 
 export default ({ children }) => {
-  const { user, logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <C.Container>

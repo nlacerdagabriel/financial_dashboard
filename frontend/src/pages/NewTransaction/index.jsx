@@ -1,7 +1,7 @@
 import * as C from "./styles";
 import Grid from "../../layout/Grid";
 import Header from "../../components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AnimatedInput from "../../components/AnimatedInput";
 import React from "react";
 import AnimatedSelect from "../../components/AnimatedSelect";
@@ -21,13 +21,28 @@ export default () => {
 
   const navigate = useNavigate();
 
+  function moneyMask(value) {
+    value = value.replace(",", ".")
+
+    setValue(value);
+  }
+
+  useEffect(() => {
+    if (value !== "") {
+      const timeoutId = setTimeout(() => moneyMask(value), 100);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [value]);
+
   async function handleSubmit(e) {
     e.preventDefault();
     setFormSubmited(true);
+    const valueAsFloat = parseFloat(value)
 
-    await createTransaction(title, category, type, date, value);
-
-    navigate("/transactions");
+    if (title && category && type && date && value) {
+      await createTransaction(title, category, type, date, valueAsFloat);
+      navigate("/transactions");
+    }
   }
 
   return (
@@ -55,7 +70,7 @@ export default () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               />
-               {formSubmited && category.length <= 0 && <ValidateLabel />}
+              {formSubmited && category.length <= 0 && <ValidateLabel />}
             </div>
           </C.ContainerInputs>
 
@@ -68,7 +83,7 @@ export default () => {
                 items={itemsType}
                 onChange={(e) => setType(e.target.value)}
               />
-               {formSubmited && type.length <= 0 && <ValidateLabel />}
+              {formSubmited && type.length <= 0 && <ValidateLabel />}
             </div>
 
             <div style={{ width: "33%" }} className="inputDate">
@@ -79,18 +94,19 @@ export default () => {
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
               />
-               {formSubmited && date.length <= 0 && <ValidateLabel />}
+              {formSubmited && date.length <= 0 && <ValidateLabel />}
             </div>
 
             <div style={{ width: "33%" }}>
               <AnimatedInput
                 width="100%"
                 label="Value"
-                type="number"
+                type="text"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
               />
-               {formSubmited && value.length <= 0 && <ValidateLabel />}
+
+              {formSubmited && value.length <= 0 && <ValidateLabel />}
             </div>
           </C.ContainerInputs>
         </C.Form>

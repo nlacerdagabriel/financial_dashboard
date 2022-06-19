@@ -11,14 +11,13 @@ export default class AuthController {
 
     const data = await request.validate({ schema: userSchema })
 
-
     try {
       const token = await auth.use('api').attempt(data.email, data.password)
       const user = await auth.use('api').user
       return response.json({ user, token })
 
     } catch (error) {
-      return response.json(error)
+      return response.status(400).json(error)
     }
   }
 
