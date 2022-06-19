@@ -16,9 +16,9 @@ export default ({ id, title, category, value, date, type }) => {
         <C.ContainerValueDate>
           <p>
             {type == "Outcome" && "- "}
-            {new Intl.NumberFormat("pt-BR", {
+            {new Intl.NumberFormat("en-US", {
               style: "currency",
-              currency: "BRL",
+              currency: "USD",
             }).format(value)}
           </p>
           <p>{formatDate(date)}</p>

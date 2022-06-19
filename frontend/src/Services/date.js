@@ -40,7 +40,18 @@ export function formatDate(date) {
   const day = newDate.getDate();
   const month = newDate.getMonth() + 1;
 
-  return `${day < 9 ? "0" + day : day}/${
+  return `${year}/${
     month < 9 ? "0" + month : month
-  }/${year}`;
+  }/${day < 9 ? "0" + day : day}`;
+}
+
+export function formatDateToInput(date) {
+  const newDate = new Date(date);
+  const year = newDate.getFullYear();
+  const day = newDate.getDate();
+  const month = newDate.getMonth() + 1;
+
+  return `${year}-${
+    month < 9 ? "0" + month : month
+  }-${day < 9 ? "0" + day : day}`;
 }

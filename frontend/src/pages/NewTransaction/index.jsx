@@ -8,12 +8,13 @@ import AnimatedSelect from "../../components/AnimatedSelect";
 import { Link, useNavigate } from "react-router-dom";
 import { createTransaction } from "../../services/TransactionServices";
 import ValidateLabel from "../../components/ValidateLabel";
+import {formatDateToInput } from "../../services/date";
 
 export default () => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [type, setType] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(`${formatDateToInput(Date.now())}`)
   const [value, setValue] = useState("");
   const [formSubmited, setFormSubmited] = useState(false);
 
@@ -22,7 +23,7 @@ export default () => {
   const navigate = useNavigate();
 
   function moneyMask(value) {
-    value = value.replace(",", ".")
+    value = value.replace(",", ".");
 
     setValue(value);
   }
@@ -32,12 +33,14 @@ export default () => {
       const timeoutId = setTimeout(() => moneyMask(value), 100);
       return () => clearTimeout(timeoutId);
     }
+
+    console.log(date)
   }, [value]);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setFormSubmited(true);
-    const valueAsFloat = parseFloat(value)
+    const valueAsFloat = parseFloat(value);
 
     if (title && category && type && date && value) {
       await createTransaction(title, category, type, date, valueAsFloat);

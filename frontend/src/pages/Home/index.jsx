@@ -64,6 +64,7 @@ export default () => {
               {loading && <Loading />}
               {transactionsList.map((it, index) => (
                 <CardTransaction
+                  id={it.id}
                   type={it.type}
                   title={it.name}
                   value={it.value}

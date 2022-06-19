@@ -25,7 +25,6 @@ export default () => {
 
   return (
     <C.Container>
-
       <CardForm>
         <h1>Register</h1>
         <InputWithIcon
@@ -47,6 +46,7 @@ export default () => {
           <MdEmail size={26} color="#1E2633" />
         </InputWithIcon>
         <InputWithIcon
+          type="password"
           colorText="rgba(0,0,0,0.7)"
           bgColor="var(--white)"
           value={password}
@@ -56,6 +56,7 @@ export default () => {
           <FaLock size={23} color="#1E2633" />
         </InputWithIcon>
         <InputWithIcon
+          type="password"
           colorText="rgba(0,0,0,0.7)"
           bgColor="var(--white)"
           value={confirmPassword}

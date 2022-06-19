@@ -44,9 +44,9 @@ useEffect(() => {
         <img src={balanceIcon} alt="money balance icon" />
         <C.Label>Balance</C.Label>
         <C.Value>
-          {new Intl.NumberFormat("pt-BR", {
+          {new Intl.NumberFormat("en-US", {
             style: "currency",
-            currency: "BRL",
+            currency: "USD",
           }).format(summary.total)}
         </C.Value>
       </C.ContainerInfo>
@@ -55,9 +55,9 @@ useEffect(() => {
         <img src={IncomeIcon} alt="money balance icon" />
         <C.Label>Income</C.Label>
         <C.Value>
-          {new Intl.NumberFormat("pt-BR", {
+          {new Intl.NumberFormat("en-US", {
             style: "currency",
-            currency: "BRL",
+            currency: "USD",
           }).format(summary.incomes)}
         </C.Value>
       </C.ContainerInfo>
@@ -66,9 +66,9 @@ useEffect(() => {
         <img src={OutcomeIcon} alt="money balance icon" />
         <C.Label>Outcome</C.Label>
         <C.Value>
-          {new Intl.NumberFormat("pt-BR", {
+          {new Intl.NumberFormat("en-US", {
             style: "currency",
-            currency: "BRL",
+            currency: "USD",
           }).format(summary.outcomes)}
         </C.Value>
       </C.ContainerInfo>

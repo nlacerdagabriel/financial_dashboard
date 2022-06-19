@@ -37,6 +37,10 @@ export const DataInfo = styled.div`
     display: flex;
     align-items: center;
 
+    &{
+      margin-bottom: 1rem;
+    }
+
     & > div{
         margin-right: 0.5rem;
         height: 3rem;
@@ -48,7 +52,4 @@ export const DataInfo = styled.div`
         align-items: center;
     }
 
-    & > div:first-child{
-        margin-bottom: 1rem;
-    }
 `

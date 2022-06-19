@@ -35,6 +35,7 @@ export default () => {
           <MdEmail size={26} color="#1E2633" />
         </InputWithIcon>
         <InputWithIcon
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           colorText="rgba(0,0,0,0.7)"

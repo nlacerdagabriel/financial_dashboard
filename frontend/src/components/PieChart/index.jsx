@@ -19,7 +19,7 @@ export default () => {
   return (
     <C.Container>
       <C.ChartInfo>
-        <p>Relação</p>
+        <p>Relation</p>
 
         <C.DataInfo backgroundColor="var(--success)">
           <div>
