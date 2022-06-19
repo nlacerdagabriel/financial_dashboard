@@ -31,8 +31,12 @@ export default () => {
     setTimeout(() => {
       async function getData() {
         const response = await getAllOutcomes();
-        setTransactionsList(response.data);
-        setLoading(false)
+        const arraySorted = response.data.sort(function (a, b) {
+          return new Date(b.date) - new Date(a.date);
+        });
+
+        setTransactionsList(arraySorted);
+        setLoading(false);
       }
 
       getData();
@@ -47,7 +51,7 @@ export default () => {
         {transactionsList.length == 0 && <NoInfoMessage />}
         {transactionsList.map((it, index) => (
           <CardTransaction
-          id={it.id}
+            id={it.id}
             type={it.type}
             title={it.name}
             value={it.value}

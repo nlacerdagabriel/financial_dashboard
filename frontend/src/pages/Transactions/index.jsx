@@ -31,7 +31,12 @@ export default () => {
     setTimeout(() => {
       async function getData() {
         const response = await getAllTransactions();
-        setTransactionsList(response.data);
+
+        const arraySorted = response.data.sort(function (a, b) {
+          return new Date(b.date) - new Date(a.date);
+        });
+
+        setTransactionsList(arraySorted);
         setLoading(false);
       }
 

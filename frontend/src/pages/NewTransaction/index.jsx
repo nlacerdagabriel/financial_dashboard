@@ -101,7 +101,7 @@ export default () => {
               <AnimatedInput
                 width="100%"
                 label="Value"
-                type="text"
+                type="number"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
               />

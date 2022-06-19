@@ -13,6 +13,11 @@ export const Container = styled.div`
   align-items: center;
   margin-bottom: 1rem;
   color: var(--white);
+  transition: 0.3s;
+
+  &:hover{
+    background-color: ${props => props.type};
+  }
 `;
 
 export const ContainerNameCategory = styled.div`

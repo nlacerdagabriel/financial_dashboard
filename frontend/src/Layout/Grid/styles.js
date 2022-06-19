@@ -10,14 +10,17 @@ export const Sidebar = styled.nav`
   max-width: 310px;
   background-color: var(--bg-light);
   border-right: 1px solid var(--gray);
-  padding-left: 60px;
   padding-top: 140px;
 
   li {
     display: flex;
     align-items: center;
-    margin-bottom: 1.5rem;
     list-style: none;
+    padding: 1rem 0px 1rem 60px;
+
+    &:hover{
+      background-color: var(--bg-dark);
+    }
 
     a{
       display: flex;

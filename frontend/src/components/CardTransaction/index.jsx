@@ -7,6 +7,7 @@ export default ({ id, title, category, value, date, type }) => {
     <Link to={`/update-transaction/${id}`}>
       <C.Container
         borderColor={type == "Income" ? "var(--success)" : "var(--danger)"}
+        type={type == "Income" ? "rgb(10, 71, 0, 0.5)" : "rgb(112, 0, 1, 0.5)"}
       >
         <C.ContainerNameCategory>
           <p>{title}</p>

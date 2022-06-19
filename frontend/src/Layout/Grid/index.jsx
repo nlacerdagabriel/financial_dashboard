@@ -17,41 +17,41 @@ export default ({ children }) => {
     <C.Container>
       <C.Sidebar>
         <ul>
-          <li>
-            <Link to="/">
+          <Link to="/">
+            <li>
               <RiLayout3Fill size={26} color="#09C0FA" />
               <p>Dashboard</p>
-            </Link>
-          </li>
-          <li>
-            <Link to="/new-transaction">
+            </li>
+          </Link>
+          <Link to="/new-transaction">
+            <li>
               <RiMoneyDollarCircleFill size={26} color="#09C0FA" />
               <p>New transaction</p>
-            </Link>
-          </li>
-          <li>
-            <Link to="/transactions">
+            </li>
+          </Link>
+          <Link to="/transactions">
+            <li>
               <BsArrowDownUp size={26} color="#09C0FA" />
               <p>All transactions</p>
-            </Link>
-          </li>
+            </li>
+          </Link>
 
-          <li>
-            <Link to="/transactions/incomes">
+          <Link to="/transactions/incomes">
+            <li>
               <AiOutlineArrowUp size={26} color="#09C0FA" />
               <p>Incomes</p>
-            </Link>
-          </li>
+            </li>
+          </Link>
 
-          <li>
-            <Link to="/transactions/outcomes">
+          <Link to="/transactions/outcomes">
+            <li>
               <AiOutlineArrowDown size={26} color="#09C0FA" />
               <p>Outcomes</p>
-            </Link>
-          </li>
-          <li style={{ cursor: "pointer" }}>
+            </li>
+          </Link>
+          <li onClick={logout} style={{ cursor: "pointer" }}>
             <MdOutlineExitToApp size={26} color="#09C0FA" />
-            <p onClick={logout}>Exit</p>
+            <p>Exit</p>
           </li>
         </ul>
       </C.Sidebar>
