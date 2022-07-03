@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { formatDate } from "../../services/date";
+import { formatDate } from "../../Services/date";
 import * as C from "./styles";
 
 export default ({ id, title, category, value, date, type }) => {
