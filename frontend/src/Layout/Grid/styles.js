@@ -33,6 +33,12 @@ export const Sidebar = styled.nav`
         font-size: 1rem;
     }
   }
+
+  @media(max-width: 1120px){
+    width: 0;
+    overflow: hidden;
+    border-right: 0px;
+  }
 `;
 
 export const Content = styled.div`
