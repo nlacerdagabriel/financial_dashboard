@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import * as C from "./styles";
 import Grid from "../../Layout/Grid";
 import Header from "../../components/Header";

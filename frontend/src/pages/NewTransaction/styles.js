@@ -6,6 +6,10 @@ export const Container = styled.div`
   flex-direction: column;
 
   margin-top: 10rem;
+
+  @media (max-width: 576px) {
+    margin-top: 5rem;
+  }
 `;
 
 export const Form = styled.form`
@@ -25,20 +29,40 @@ export const ContainerInputs = styled.div`
   align-items: center;
   margin-bottom: 4rem;
 
-  & > div{
-    position: relative;
-  }
-  
-  .inputDate{
+  .inputDate {
     margin: 0 3rem;
   }
 
-  .inputTitle{
+  .inputTitle {
     margin-right: 3rem;
   }
 
-  .inputType > select{
+  .inputType > select {
     padding-left: 0.8rem;
+  }
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    margin-bottom: 0;
+
+    & > div {
+      width: 100% !important;
+    }
+
+    & > div,
+    .inputDate,
+    .inputTitle,
+    .inputType {
+      margin: 1.5rem 0;
+    }
+
+    .inputTitle {
+      margin-right: 0;
+    }
+
+    .inputType > select {
+      padding-left: 0;
+    }
   }
 `;
 
@@ -62,6 +86,8 @@ export const ContainerButtons = styled.div`
 
   & > div {
     display: flex;
+    width: 100%;
+    justify-content: flex-end;
 
     button {
       height: 50px;
@@ -86,6 +112,16 @@ export const ContainerButtons = styled.div`
 
     button:last-child {
       background-color: var(--success);
+    }
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+        height: 60px;
+        margin: 0.5rem 0;
+      }
     }
   }
 `;
