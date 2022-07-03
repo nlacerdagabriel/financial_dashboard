@@ -29,6 +29,10 @@ export const ContainerInputs = styled.div`
   align-items: center;
   margin-bottom: 4rem;
 
+  & > div{
+    position: relative
+  }
+
   .inputDate {
     margin: 0 3rem;
   }
