@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import * as C from "./styles";
-import Grid from "../../layout/Grid";
+import Grid from "../../Layout/Grid";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import AnimatedInput from "../../components/AnimatedInput";
@@ -11,7 +11,7 @@ import {
   deleteTransaction,
   getOneTransaction,
   updateTransaction,
-} from "../../services/TransactionServices";
+} from "../../Services/TransactionServices";
 
 export default () => {
   const { id } = useParams();

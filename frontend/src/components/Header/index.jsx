@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import * as C from "./styles";
-import { months, years} from "../../services/date";
+import { months, years, currentMonth, currentYear } from "../../Services/date";
+import { useEffect } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";

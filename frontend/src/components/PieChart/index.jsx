@@ -1,7 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
 import * as C from "./styles";
 import { PieChart } from "react-minimal-pie-chart";
+import { useEffect } from "react";
 import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
+import { useState } from "react";
 import { TransactionsContext } from "../../contexts/TransactionsContext";
 
 export default () => {
