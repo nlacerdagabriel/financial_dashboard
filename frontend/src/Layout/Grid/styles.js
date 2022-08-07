@@ -18,23 +18,23 @@ export const Sidebar = styled.nav`
     list-style: none;
     padding: 1rem 0px 1rem 60px;
 
-    &:hover{
+    &:hover {
       background-color: var(--bg-dark);
     }
 
-    a{
+    a {
       display: flex;
       align-items: center;
     }
 
     p {
-        margin-left: 0.5rem;
-        color: var(--white);
-        font-size: 1rem;
+      margin-left: 0.5rem;
+      color: var(--white);
+      font-size: 1rem;
     }
   }
 
-  @media(max-width: 1120px){
+  @media (max-width: 1120px) {
     width: 0;
     overflow: hidden;
     border-right: 0px;

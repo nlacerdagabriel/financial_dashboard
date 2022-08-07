@@ -16,6 +16,11 @@ export const Graphics = styled.div`
   width: 100%;
   display: flex;
   margin-bottom: 1rem;
+
+  
+  @media(max-width: 768px){
+    flex-direction: column;
+  }
 `;
 
 

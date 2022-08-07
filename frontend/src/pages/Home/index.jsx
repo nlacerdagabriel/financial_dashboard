@@ -59,6 +59,7 @@ export default () => {
               <FeedbackHome />
               <PieChart />
             </C.Graphics>
+            
             <C.ContainerTransactions>
               {loading && <Loading />}
               {transactionsList.map((it, index) => (

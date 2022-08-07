@@ -18,6 +18,16 @@ export const Container = styled.div`
   svg{
     flex: 1.5;
   }
+
+  @media(max-width: 768px){
+    max-height: inherit;
+    height: inherit;
+    align-items: center;
+  }
+
+  svg{
+    max-width: 50%;
+  }
 `
 
 export const ChartInfo = styled.div`
