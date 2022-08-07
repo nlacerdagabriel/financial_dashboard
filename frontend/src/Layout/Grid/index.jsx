@@ -19,7 +19,7 @@ export default ({ children }) => {
           <Link to="/">
             <li>
               <RiLayout3Fill size={26} color="#09C0FA" />
-              <p>Dashboard</p>
+              <p>Dashboardl</p>
             </li>
           </Link>
           <Link to="/new-transaction">
