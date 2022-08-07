@@ -1,17 +1,16 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from "react";
 import * as C from "./styles";
-import Grid from "../../Layout/Grid";
+import Grid from "../../layout/Grid";
 import Header from "../../components/Header";
 import InfoMoney from "../../components/InfoMoney";
 import PieChart from "../../components/PieChart";
 import CardTransaction from "../../components/CardTransaction";
 import { Link } from "react-router-dom";
 import FeedbackHome from "../../components/FeedbackHome";
-import { currentMonth, currentYear } from "../../Services/date";
+import { currentMonth, currentYear } from "../../services/date";
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
-import { TransactionsContext } from "../../contexts/TransactionsContext";
 import Loading from "../../components/Loading";
 import NoInfoMessage from "../../components/NoInfoMessage";
 
