@@ -12,7 +12,7 @@ export default () => {
   const {incomesValue, outcomesValue, totalValue} = useContext(TransactionsContext)
   
   const data = [
-    { title: "Incomes", value: incomesValue, color: "var(--success)" },
+    { title: "Balance", value: totalValue, color: "var(--success)" },
     { title: "Outcomes", value: outcomesValue, color: "var(--danger)" },
   ];
 
@@ -23,14 +23,14 @@ export default () => {
 
         <C.DataInfo backgroundColor="var(--success)">
           <div>
-            <p>{Math.ceil(incomesValue / (incomesValue + outcomesValue) * 100)}%</p>
+            <p>{Math.ceil(totalValue / incomesValue * 100)}%</p>
           </div>
 
           <p>Incomes</p>
         </C.DataInfo>
         <C.DataInfo backgroundColor="var(--danger)">
           <div>
-            <p>{Math.floor(outcomesValue / (incomesValue + outcomesValue) * 100)}%</p>
+            <p>{Math.floor(outcomesValue / incomesValue * 100)}%</p>
           </div>
 
           <p>Outcomes</p>
