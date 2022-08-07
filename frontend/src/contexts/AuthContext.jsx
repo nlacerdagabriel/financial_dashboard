@@ -4,8 +4,8 @@ import {
   createSession,
   createUser,
   exitSession,
-} from "../Services/UserServices";
-import { api } from "../Services/api";
+} from "../services/UserServices";
+import { api } from "../services/api";
 import { toast } from "react-toastify";
 import { handleRegisterErrors } from "../utils/validateFieldRegisterPage";
 

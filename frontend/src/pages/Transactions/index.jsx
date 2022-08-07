@@ -5,8 +5,8 @@ import Header from "../../components/Header";
 import Loading from "../../components/Loading";
 import NoInfoMessage from "../../components/NoInfoMessage";
 import { AppContext } from "../../contexts/AppContext";
-import Grid from "../../Layout/Grid";
-import { currentMonth, currentYear } from "../../Services/date";
+import Grid from "../../layout/Grid";
+import { currentMonth, currentYear } from "../../services/date";
 import * as C from "./styles";
 
 export default () => {
