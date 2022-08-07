@@ -41,5 +41,9 @@ export const Container = styled.div`
       border-color: var(--primary-light);
     }
 
+    @media(max-width: 576px){
+      height: 50px;
+    }
+
   }
 `;

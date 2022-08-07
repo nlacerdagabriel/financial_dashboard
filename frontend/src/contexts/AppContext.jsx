@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
-import { currentMonth, currentYear, months } from "../services/date";
-import { api } from "../services/api";
+import { currentMonth, currentYear, months } from "../Services/date";
+import { api } from "../Services/api";
 import { getToken } from "../utils/getToken";
 
 export const AppContext = createContext();
