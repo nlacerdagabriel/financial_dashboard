@@ -53,7 +53,8 @@ export const Header = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 3rem;
+
+  padding-right: 2rem;
 
   div {
     display: flex;

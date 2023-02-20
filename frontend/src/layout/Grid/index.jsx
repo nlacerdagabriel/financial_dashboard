@@ -7,6 +7,7 @@ import { MdOutlineExitToApp } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import DrawerT from "../../components/Drawer";
 
 export default ({ children }) => {
   const { logout } = useContext(AuthContext);
@@ -57,6 +58,8 @@ export default ({ children }) => {
 
       <C.Content>
         <C.Header>
+          
+      <DrawerT/>
           <div>
             <p>Olá,🤑</p>
             <p>{user.name}</p>
